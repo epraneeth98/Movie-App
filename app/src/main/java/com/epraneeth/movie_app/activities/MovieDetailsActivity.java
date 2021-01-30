@@ -29,7 +29,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     private void init() {
         originalTitle = findViewById(R.id.movie_details_original_title);
         voteAverage = findViewById(R.id.movie_details_vote_average);
-        overview= findViewById(R.id.movie_details_overview);
+        overview = findViewById(R.id.movie_details_overview);
         movieImage = findViewById(R.id.movie_details_image);
         Intent intent = getIntent();
         originalTitle.setText(intent.getStringExtra("original_title"));
