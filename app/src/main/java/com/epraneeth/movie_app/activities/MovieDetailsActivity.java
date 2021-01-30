@@ -35,7 +35,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         originalTitle.setText(intent.getStringExtra("original_title"));
         voteAverage.setText(intent.getStringExtra("vote_average"));
         overview.setText(intent.getStringExtra("overview"));
-        Glide.with(this)
+        Picasso.with(this)
                 .load("https://image.tmdb.org/t/p/w500" + intent.getStringExtra("backdrop_path"))
                 .into(movieImage);
     }
