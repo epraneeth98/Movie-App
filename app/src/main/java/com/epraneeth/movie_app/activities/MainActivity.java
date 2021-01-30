@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         StringRequest request = new StringRequest(
                 Request.Method.GET,
-                "https://api.themoviedb.org/4/list/1?page=1&api_key=4056e9ab60d125ddec6ec2a67d91aea7",
+                "https://api.themoviedb.org/4/list/20?page=1&api_key=4056e9ab60d125ddec6ec2a67d91aea7",
                 response -> {
                     Gson gson = new GsonBuilder().create();
                     movieResponse = gson.fromJson(response, MovieResponse.class);
