@@ -43,43 +43,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl("https://api.themoviedb.org/4/list/")
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//
-//        MoviePlaceHolder moviePlaceHolderAPI = retrofit.create(MoviePlaceHolder.class);
-//        Call<MovieResponse> call = moviePlaceHolderAPI.getMovieResponse("1","4056e9ab60d125ddec6ec2a67d91aea7");
-//        call.enqueue(new Callback<MovieResponse>() {
-//            @Override
-//            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-//                Log.d("abc", "onResponse - Status : " + response.code());
-//                movieResponse=response.body();
-//                Log.d("abc", String.valueOf(movieResponse.getResults().size()));
-//                movieArrayList.addAll(movieResponse.getResults());
-//                movieAdapter.setData(movieArrayList);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<MovieResponse> call, Throwable t) {
-//                Log.d("abc", "Error Buddy!-"+ t.getMessage());
-//            }
-//        });
-        StringRequest request = new StringRequest(
-                Request.Method.GET,
-                "https://api.themoviedb.org/4/list/20?page=1&api_key=4056e9ab60d125ddec6ec2a67d91aea7",
-                response -> {
-                    Gson gson = new GsonBuilder().create();
-                    movieResponse = gson.fromJson(response, MovieResponse.class);
-                    movieArrayList.addAll(movieResponse.getResults());
-                    movieAdapter.setData(movieArrayList);
-                },
-                error -> {
-                    Log.d("abc", "Error Buddy!");
-                }
-        );
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(request);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.themoviedb.org/4/list/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        MoviePlaceHolder moviePlaceHolderAPI = retrofit.create(MoviePlaceHolder.class);
+        Call<MovieResponse> call = moviePlaceHolderAPI.getMovieResponse("1","4056e9ab60d125ddec6ec2a67d91aea7");
+        call.enqueue(new Callback<MovieResponse>() {
+            @Override
+            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                Log.d("abc", "onResponse - Status : " + response.code());
+                movieResponse=response.body();
+                Log.d("abc", String.valueOf(movieResponse.getResults().size()));
+                movieArrayList.addAll(movieResponse.getResults());
+                movieAdapter.setData(movieArrayList);
+            }
+
+            @Override
+            public void onFailure(Call<MovieResponse> call, Throwable t) {
+                Log.d("abc", "Error Buddy!-"+ t.getMessage());
+            }
+        });
 
 
         //init 2
