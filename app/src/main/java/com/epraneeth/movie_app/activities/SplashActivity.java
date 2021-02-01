@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toolbar;
 
 import com.epraneeth.movie_app.R;
 
 public class SplashActivity extends AppCompatActivity {
     ProgressBar progressBar;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,7 @@ public class SplashActivity extends AppCompatActivity {
             startActivity(i);
             progressBar = findViewById(R.id.progress_bar);
             progressBar.setVisibility(View.INVISIBLE);
+            //toolbar = findViewById(R.id.);
             finish();
         }, 1500);
     }
