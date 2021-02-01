@@ -43,7 +43,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         Movie movie = mList.get(position);
         holder.textView.setText(movie.getOriginal_title());
-        Picasso.with(mContext)
+        Glide.with(mContext)
                 .load("https://image.tmdb.org/t/p/w500" + movie.getPoster_path())
                 .into(holder.imageView);
         holder.imageView.setOnClickListener(v -> {
